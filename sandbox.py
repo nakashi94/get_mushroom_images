@@ -1,32 +1,23 @@
-from time import sleep
-from selenium.webdriver.common.keys import Keys
-import requests
-from bs4 import BeautifulSoup
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
+# file = open("sample.txt", "w", encoding="utf-8")
 
-options = webdriver.ChromeOptions()
-# options.add_argument("--headless")
-options.add_experimental_option('excludeSwitches', ['enable-logging'])
-options.use_chromium = True
-browser = webdriver.Chrome(service=Service(
-    ChromeDriverManager().install()), options=options)
+# file.write("Hello python\n")
+# file.write("Hello world!\n")
+# file.write("Hi, Tanaka")
 
-url = "https://www.google.co.jp/imghp?hl=ja"
-browser.get(url)
+# file.close()
 
-keywords = ["舞茸", "しめじ", "椎茸"]
+# file = open("sample.txt", "r", encoding="utf-8")
 
-for keyword in keywords:
-    kw_search = browser.find_element_by_css_selector(
-        "#sbtc > div > div.a4bIc > input")
-    kw_search.send_keys(keyword)
-    kw_search.send_keys(Keys.ENTER)
-    cur_url = browser.current_url
-    res = requests.get(cur_url)
-    print(res)
-    soup = BeautifulSoup(res.text, "html.parser")
-    print(soup.find_all("img", limit=10))
-    sleep(3)
-    browser.get(url)
+# content = file.read()
+# print(content)
+# print(type(content))
+
+# file.close()
+
+# with open("index.txt", "w", encoding="utf-8") as file:
+#     file.write("Hello index")
+
+names = ["Tanaka", "Suzuki", "Yamada"]
+
+for i, name in enumerate(names):
+    print(f"{i}:{name}")
